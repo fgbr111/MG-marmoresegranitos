@@ -1,0 +1,33 @@
+COMO ADICIONAR FOTOS DAS PEDRAS
+
+Foto da pedra:      coloque em img/pedras/   com o nome abaixo
+Foto de um servico: coloque em img/servicos/ com o MESMO nome
+Se o arquivo nao existir, o site mostra apenas a cor da pedra.
+Para pedra nova, edite STONES em script.js (nome em minusculas, sem acento, com hifen).
+
+preto-sao-gabriel.jpg
+verde-ubatuba.jpg
+branco-siena.jpg
+cinza-andorinha.jpg
+amarelo-ornamental.jpg
+vermelho-capao-bonito.jpg
+carrara.jpg
+calacatta.jpg
+travertino.jpg
+nero-marquina.jpg
+bege-bahia.jpg
+branco-pigues.jpg
+basalto-preto.jpg
+basalto-cinza.jpg
+basalto-flameado.jpg
+basalto-escovado.jpg
+branco.jpg
+cinza.jpg
+preto-estelar.jpg
+bege.jpg
+efeito-marmore.jpg
+taj-mahal.jpg
+cristallo.jpg
+dolce-vita.jpg
+fusion.jpg
+sea-pearl.jpg

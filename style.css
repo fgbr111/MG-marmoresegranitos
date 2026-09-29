@@ -72,9 +72,12 @@ h3{font-size:1.5rem;margin-bottom:.5rem}
 .stone-panel[hidden]{display:none}
 .stone-panel p{color:#c9c5bb;max-width:64ch}
 .stone-panel__close{position:absolute;top:.5rem;right:.8rem;background:none;border:0;color:#aaa;font-size:1.6rem;cursor:pointer}
-.stone-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.75rem;margin:1.25rem 0 .75rem}
-.stone-list li{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border:1px solid rgba(201,162,75,.3);font-size:.92rem}
-.stone-list i{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+.stone-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1rem;margin:1.25rem 0 .75rem}
+.stone-list li{display:flex;flex-direction:column;gap:.4rem;padding:.7rem;border:1px solid rgba(201,162,75,.3);font-size:.92rem}
+.stone-list small{color:var(--gold-2);font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;margin-top:.3rem}
+.stone-photo{aspect-ratio:4/3;overflow:hidden;border:1px solid rgba(255,255,255,.15)}
+.stone-photo img{width:100%;height:100%;object-fit:cover}
+.stone-photo--uso:empty{display:none}
 .stone-note{font-size:.8rem;margin-bottom:1rem}
 @keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 

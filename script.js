@@ -62,6 +62,32 @@ const STONES = {
 };
 const stoneTabs = document.querySelectorAll("[data-stone]");
 const panel = document.getElementById("painel-pedras");
+
+// Convenção de arquivos (basta colocar a foto com o nome certo, sem mexer no código):
+//   img/pedras/<nome-da-pedra>.jpg    -> foto da pedra
+//   img/servicos/<nome-da-pedra>.jpg  -> foto de um serviço feito com ela
+// <nome-da-pedra> = nome em minúsculas, sem acento, com hífen. Ex: "Preto São Gabriel" -> preto-sao-gabriel.jpg
+// Para ver o exemplo de serviço, o campo USOS abaixo define o texto (por tipo de pedra).
+const USOS = {
+  granitos: "Bancada de cozinha",
+  marmores: "Bancada de banheiro",
+  basaltos: "Revestimento / piso",
+  quartzos: "Bancada de cozinha",
+  quartzitos: "Ilha / bancada gourmet"
+};
+const slug = n => n.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+function photo(src, alt, fallback){
+  const wrap = document.createElement("div");
+  wrap.className = "stone-photo";
+  if (fallback) wrap.style.background = fallback;
+  const img = new Image();
+  img.alt = alt; img.loading = "lazy";
+  img.onload = () => wrap.appendChild(img);   // só mostra se o arquivo existir
+  img.src = src;
+  return wrap;
+}
+
 function showStone(key){
   const st = STONES[key];
   stoneTabs.forEach(t => t.setAttribute("aria-selected", t.dataset.stone === key));
@@ -70,10 +96,16 @@ function showStone(key){
   const ul = document.getElementById("stone-list");
   ul.innerHTML = "";
   st.itens.forEach(([nome, cor]) => {
+    const s = slug(nome);
     const li = document.createElement("li");
-    const i = document.createElement("i");
-    i.style.background = cor;
-    li.append(i, nome);
+    const pedra = photo(`img/pedras/${s}.jpg`, nome, cor);
+    const servico = photo(`img/servicos/${s}.jpg`, `${USOS[key]} em ${nome}`, "");
+    servico.classList.add("stone-photo--uso");
+    const label = document.createElement("strong");
+    label.textContent = nome;
+    const uso = document.createElement("small");
+    uso.textContent = "Exemplo: " + USOS[key];
+    li.append(pedra, label, uso, servico);
     ul.appendChild(li);
   });
   panel.setAttribute("aria-labelledby", "tab-" + key);
