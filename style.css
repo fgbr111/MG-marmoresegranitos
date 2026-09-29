@@ -67,6 +67,12 @@ h3{font-size:1.5rem;margin-bottom:.5rem}
 .chips{list-style:none;display:flex;flex-wrap:wrap;gap:.75rem}
 .chips li{padding:.6rem 1.4rem;border:1px solid var(--gold);color:var(--ink);font-weight:500;background:var(--marble)}
 
+.section--video{position:relative;overflow:hidden;isolation:isolate}
+.section--video::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(13,13,13,.72),rgba(13,13,13,.82))}
+.bg-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+.section--video .card{background:rgba(13,13,13,.6);backdrop-filter:blur(3px)}
+@media (prefers-reduced-motion:reduce){.bg-video{display:none}}
+
 /* gallery */
 .filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
 .filters button{padding:.5rem 1.1rem;border:1px solid var(--line);background:var(--white);cursor:pointer;font:inherit;font-size:.88rem}
