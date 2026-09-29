@@ -31,3 +31,59 @@ buttons.forEach(btn => btn.addEventListener("click", () => {
 }));
 
 document.getElementById("ano").textContent = new Date().getFullYear();
+
+// Tipos de pedra: abre painel com exemplos
+const STONES = {
+  granitos: {
+    titulo: "Granitos",
+    desc: "Rocha natural muito resistente a riscos, calor e uso intenso. Ideal para bancadas de cozinha, pias e escadas.",
+    itens: [["Preto São Gabriel","#151515"],["Verde Ubatuba","#1f3a2e"],["Branco Siena","#ddd9d0"],["Cinza Andorinha","#8b8b88"],["Amarelo Ornamental","#c9a566"],["Vermelho Capão Bonito","#7a2a2a"]]
+  },
+  marmores: {
+    titulo: "Mármores",
+    desc: "Rocha natural de veios marcantes e visual sofisticado. Indicado para banheiros, lavabos, revestimentos e peças decorativas.",
+    itens: [["Carrara","#e7e6e3"],["Calacatta","#f1efe9"],["Travertino","#d8c7a5"],["Nero Marquina","#1a1a1a"],["Bege Bahia","#d9c9a8"],["Branco Piguês","#eeece6"]]
+  },
+  basaltos: {
+    titulo: "Basaltos",
+    desc: "Pedra vulcânica de tom escuro e grande durabilidade, típica da nossa região. Ótima para pisos, revestimentos e áreas externas.",
+    itens: [["Basalto preto","#2a2a2b"],["Basalto cinza","#6d6f70"],["Basalto flameado","#4a4b4c"],["Basalto escovado","#38393a"]]
+  },
+  quartzos: {
+    titulo: "Quartzos",
+    desc: "Material industrializado com alta resistência e baixa porosidade, com padrões uniformes. Muito usado em cozinhas e banheiros.",
+    itens: [["Branco","#f4f3f0"],["Cinza","#9a9a9a"],["Preto estelar","#1c1c1e"],["Bege","#d9cdb8"],["Efeito mármore","#e9e7e2"]]
+  },
+  quartzitos: {
+    titulo: "Quartzitos",
+    desc: "Pedra natural com dureza superior à do granito e aparência que lembra o mármore. Perfeito para projetos de alto padrão.",
+    itens: [["Taj Mahal","#e6dcc6"],["Cristallo","#eef0f0"],["Dolce Vita","#d6c9b0"],["Fusion","#b8975a"],["Sea Pearl","#cfd3d0"]]
+  }
+};
+const stoneTabs = document.querySelectorAll("[data-stone]");
+const panel = document.getElementById("painel-pedras");
+function showStone(key){
+  const st = STONES[key];
+  stoneTabs.forEach(t => t.setAttribute("aria-selected", t.dataset.stone === key));
+  document.getElementById("stone-title").textContent = st.titulo;
+  document.getElementById("stone-desc").textContent = st.desc;
+  const ul = document.getElementById("stone-list");
+  ul.innerHTML = "";
+  st.itens.forEach(([nome, cor]) => {
+    const li = document.createElement("li");
+    const i = document.createElement("i");
+    i.style.background = cor;
+    li.append(i, nome);
+    ul.appendChild(li);
+  });
+  panel.setAttribute("aria-labelledby", "tab-" + key);
+  panel.hidden = false;
+}
+function closeStone(){
+  panel.hidden = true;
+  stoneTabs.forEach(t => t.setAttribute("aria-selected", false));
+}
+stoneTabs.forEach(t => t.addEventListener("click", () => {
+  t.getAttribute("aria-selected") === "true" ? closeStone() : showStone(t.dataset.stone);
+}));
+panel.querySelector(".stone-panel__close").addEventListener("click", closeStone);

@@ -124,9 +124,21 @@
   <div class="container">
     <p class="eyebrow">Materiais</p>
     <h2>Trabalhamos com</h2>
-    <ul class="chips">
-      <li>Granitos</li><li>Mármores</li><li>Basaltos</li><li>Quartzos</li><li>Quartzitos</li>
-    </ul>
+    <div class="chips" role="tablist" aria-label="Tipos de pedra">
+      <button role="tab" id="tab-granitos" aria-controls="painel-pedras" aria-selected="false" data-stone="granitos">Granitos</button>
+      <button role="tab" id="tab-marmores" aria-controls="painel-pedras" aria-selected="false" data-stone="marmores">Mármores</button>
+      <button role="tab" id="tab-basaltos" aria-controls="painel-pedras" aria-selected="false" data-stone="basaltos">Basaltos</button>
+      <button role="tab" id="tab-quartzos" aria-controls="painel-pedras" aria-selected="false" data-stone="quartzos">Quartzos</button>
+      <button role="tab" id="tab-quartzitos" aria-controls="painel-pedras" aria-selected="false" data-stone="quartzitos">Quartzitos</button>
+    </div>
+    <div class="stone-panel" id="painel-pedras" role="tabpanel" hidden>
+      <button class="stone-panel__close" aria-label="Fechar">×</button>
+      <h3 id="stone-title"></h3>
+      <p id="stone-desc"></p>
+      <ul class="stone-list" id="stone-list"></ul>
+      <p class="stone-note">Exemplos ilustrativos. A disponibilidade varia: consulte nossa equipe.</p>
+      <a class="btn btn--gold btn--sm" data-wa href="#">Consultar disponibilidade</a>
+    </div>
     <p class="muted">Aplicações: bancadas de cozinha, bancadas de banheiro (inclusive cubas esculpidas), escadas em granito, lareiras, soleiras, peitoris e outros acabamentos.</p>
   </div>
 </section>

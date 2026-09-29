@@ -64,8 +64,19 @@ h3{font-size:1.5rem;margin-bottom:.5rem}
 .card__n{color:var(--gold);font-family:"Cormorant Garamond",serif;font-size:1.6rem}
 .card p{color:#bdb9af;font-size:.95rem}
 
-.chips{list-style:none;display:flex;flex-wrap:wrap;gap:.75rem}
-.chips li{padding:.6rem 1.4rem;border:1px solid var(--gold);color:var(--ink);font-weight:500;background:var(--marble)}
+.chips{display:flex;flex-wrap:wrap;gap:.75rem}
+.chips button{padding:.6rem 1.4rem;border:1px solid var(--gold);color:var(--ink);font:inherit;font-weight:500;background:var(--marble);cursor:pointer;transition:.2s}
+.chips button:hover{background:#ebe5d6}
+.chips button[aria-selected="true"]{background:var(--black);color:var(--gold-2)}
+.stone-panel{position:relative;margin-top:1.25rem;padding:1.75rem;background:var(--black);color:var(--white);border-left:3px solid var(--gold);animation:fade .25s ease}
+.stone-panel[hidden]{display:none}
+.stone-panel p{color:#c9c5bb;max-width:64ch}
+.stone-panel__close{position:absolute;top:.5rem;right:.8rem;background:none;border:0;color:#aaa;font-size:1.6rem;cursor:pointer}
+.stone-list{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:.75rem;margin:1.25rem 0 .75rem}
+.stone-list li{display:flex;align-items:center;gap:.7rem;padding:.6rem .8rem;border:1px solid rgba(201,162,75,.3);font-size:.92rem}
+.stone-list i{flex:none;width:34px;height:34px;border-radius:50%;border:1px solid rgba(255,255,255,.25)}
+.stone-note{font-size:.8rem;margin-bottom:1rem}
+@keyframes fade{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
 .section--video{position:relative;overflow:hidden;isolation:isolate}
 .section--video::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(rgba(13,13,13,.72),rgba(13,13,13,.82))}
